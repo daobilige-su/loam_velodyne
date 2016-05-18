@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+<meta name="google-site-verification" content="CjkdY6BqKWAVmQ78_iSq6J7ZZ9AoL7-CjFVBYGg9FU4">
+<link rel="shortcut icon" href="http://wiki.ros.org/custom/favicon.ico" type="image/ico">
+<link rel="stylesheet" href="loam_velodyne%20-%20ROS%20Wiki_files/bootstrap.css">
+<script src="loam_velodyne%20-%20ROS%20Wiki_files/ga.js" async="" type="text/javascript"></script><script src="loam_velodyne%20-%20ROS%20Wiki_files/jquery-1.js"></script>
+<script src="loam_velodyne%20-%20ROS%20Wiki_files/bootstrap.js"></script>
+<script type="text/javascript" src="loam_velodyne%20-%20ROS%20Wiki_files/sorttable.js"></script>
+<script type="text/javascript" src="loam_velodyne%20-%20ROS%20Wiki_files/jquery.js"></script>                         
+<script type="text/javascript" src="loam_velodyne%20-%20ROS%20Wiki_files/seesaw.js"></script> 
+<script type="text/javascript" src="loam_velodyne%20-%20ROS%20Wiki_files/rosversion.js"></script> 
+<!--script type="text/javascript" src="/custom/libraries/RGraph.common.core.js" ></script Used for metrics only, should be conditional, not at the top-->
+<!--script type="text/javascript" src="/custom/libraries/RGraph.bar.js" ></script same as above -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17821189-2']);
+  _gaq.push(['_setDomainName', 'wiki.ros.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index,nofollow">
+
+<title>loam_velodyne - ROS Wiki</title>
+<script type="text/javascript" src="loam_velodyne%20-%20ROS%20Wiki_files/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="loam_velodyne%20-%20ROS%20Wiki_files/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="loam_velodyne%20-%20ROS%20Wiki_files/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="loam_velodyne%20-%20ROS%20Wiki_files/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="loam_velodyne%20-%20ROS%20Wiki_files/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static197/rostheme/css/msie.css">
+<![endif]-->
+
+
+
+
+<link rel="canonical" href="http://wiki.ros.org/loam_velodyne">
+
+<link rel="Start" href="http://wiki.ros.org/Documentation">
+<link rel="Alternate" title="Wiki Markup" href="http://wiki.ros.org/loam_velodyne?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="http://wiki.ros.org/loam_velodyne?action=print">
+<link rel="Appendix" title="gates_oscillating_motion.jpg" href="http://wiki.ros.org/loam_velodyne?action=AttachFile&amp;do=view&amp;target=gates_oscillating_motion.jpg">
+<link rel="Appendix" title="lidar3.jpg" href="http://wiki.ros.org/loam_velodyne?action=AttachFile&amp;do=view&amp;target=lidar3.jpg">
+<link rel="Appendix" title="maps.jpg" href="http://wiki.ros.org/loam_velodyne?action=AttachFile&amp;do=view&amp;target=maps.jpg">
+<link rel="Appendix" title="nsh_indoor_outdoor.jpg" href="http://wiki.ros.org/loam_velodyne?action=AttachFile&amp;do=view&amp;target=nsh_indoor_outdoor.jpg">
+<link rel="Search" href="http://wiki.ros.org/FindPage">
+<link rel="Index" href="http://wiki.ros.org/TitleIndex">
+<link rel="Glossary" href="http://wiki.ros.org/WordIndex">
+<link rel="Help" href="http://wiki.ros.org/HelpOnFormatting">
+</head>
+
+<body dir="ltr" lang="en">
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="loam_velodyne%20-%20ROS%20Wiki_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5950817-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+if(f) f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+if(e) {
+  searchChange(e);
+  searchBlur(e);
+}
+
+function handleSubmit() {
+  var f = document.getElementById('searchform');
+  var t = document.getElementById('searchinput');
+  var r = document.getElementById('real_searchinput');
+  
+  //alert("handleSubmit "+ t.value);
+  if(t.value.match(/review/)) {
+    r.value = t.value;
+  } else {
+    //r.value = t.value + " -PackageReviewCategory -StackReviewCategory -M3Review -DocReview -ApiReview -HelpOn -BadContent -LocalSpellingWords";
+    r.value = t.value + " -PackageReviewCategory -StackReviewCategory -DocReview -ApiReview";
+  }
+  //return validate(f);
+}
+//-->
+</script>
+
+<div id="dpage">
+  <div id="dpage-inner">
+    <div id="header"><div id="topnav">
+
+<!-- Alert box -->
+<!-- To enable the alert box uncomment the block below. Change the getItem and setItem calls to a new name. Then update the content below the button. -->
+<!-- Disabling alert box
+    <div class="alert alert-info alert-dismissable" style="text-align: center;">
+<script>
+jQuery(function( $ ){
+    state = localStorage.getItem('roswiki_osrf2014');
+    if (!state) {
+      localStorage.setItem('roswiki_roscon2015cfp', 'open');
+    }
+    state = localStorage.getItem('roswiki_roscon2015cfp');
+    if (state == 'closed') {
+        $( '#topnav .alert' ).hide();
+    }
+    $( '.close' ).click(function () {
+	console.log('in .close.click');
+        localStorage.setItem('roswiki_osrf2014', 'closed');
+        $( '#topnav .alert' ).hide();
+  });
+});
+</script>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      The <a href="http://roscon.ros.org/2015/#call-for-proposals">ROSCon 2015 CFP</a> is open until July 7th. Submit your proposal <a href="http://roscon.ros.org/review">here</a>.
+    </div>
+End disabling alert box -->
+<!-- End Alert box -->
+
+      <table id="topnav-table">
+        <tbody><tr>
+          <td valign="top" width="300"><a href="http://wiki.ros.org/"><img src="loam_velodyne%20-%20ROS%20Wiki_files/ros_org.png" alt="ros.org" height="51" width="238" border="0"></a></td>
+          <td valign="middle">
+            <a href="http://www.ros.org/about-ros">About</a>
+            |
+            <a href="http://wiki.ros.org/Support">Support</a>
+            |
+            <a href="http://status.ros.org/">Status</a>
+            |
+            <a href="http://answers.ros.org/">answers.ros.org</a>
+
+<!--a href="http://roscon.ros.org/2015/"><img align="middle" style="padding-left: 15px;" src="http://ros.org/images/roscon_wiki_header.jpg" width="133" height="38" alt="ROSCon 2015" /></a--> 
+
+<!-- <a href="https://events.osrfoundation.org/ros-kong-2014/"><img align="middle" style="padding-left: 15px;" src="http://ros.org/images/ros_kong_2014_badge.png" width="133" height="38" alt="roskong" /></a>
+-->
+<!--a href="https://events.osrfoundation.org/ros-kong-2014/"><img align="middle" style="padding-left: 15px;" src="http://imgur.com/eMzUJVe.png" width="133" height="38" alt="roskong" /></a-->
+          </td>
+
+          <td valign="middle" align="right">
+
+<script language="Javascript">
+
+function Searchy(theButton){
+
+theForm = theButton.form;
+newID = theForm.input.value;
+theForm.q.value = newID;
+theForm.input.value=theForm.input.value
+
+}
+</script>
+
+
+<form action="http://www.ros.org/search/index.html" id="cse">
+  <div>
+    <label>Search:</label>
+    <input name="cx" value="018259903093183594226:txvzw9fat6w" type="hidden">
+    <input name="cof" value="FORID:11;NB:1" type="hidden">
+    <input name="filter" value="0" type="hidden">
+    <input name="num" value="10" type="hidden">
+
+    <input name="ie" value="UTF-8" type="hidden">
+    <input name="input" id="input" autocomplete="on" style="width: 35%" type="text">
+    <input name="q" value="" type="hidden">
+    <input name="sa" value="Submit" onclick="Searchy(this)" type="submit">
+
+  </div>
+</form>
+
+         </td>
+      </tr>
+      <tr>
+        <td colspan="3" height="53" width="1024"><nobr><img src="loam_velodyne%20-%20ROS%20Wiki_files/menu_left.png" alt="" height="53" width="17"><a href="http://wiki.ros.org/"><img src="loam_velodyne%20-%20ROS%20Wiki_files/menu_documentation.png" alt="Documentation" height="53" width="237" border="0"></a><img src="loam_velodyne%20-%20ROS%20Wiki_files/menu_spacer.png" height="53" width="69"><a href="http://www.ros.org/browse/"><img src="loam_velodyne%20-%20ROS%20Wiki_files/menu_browse_software.png" alt="Browse Software" height="53" width="268" border="0"></a><img src="loam_velodyne%20-%20ROS%20Wiki_files/menu_spacer.png" height="53" width="69"><a href="http://www.ros.org/news"><img src="loam_velodyne%20-%20ROS%20Wiki_files/menu_news.png" alt="News" height="53" width="84" border="0"></a><img src="loam_velodyne%20-%20ROS%20Wiki_files/menu_spacer.png" height="53" width="69"><a href="http://wiki.ros.org/ROS/Installation"><img src="loam_velodyne%20-%20ROS%20Wiki_files/menu_download.png" alt="Download" height="53" width="151" border="0"></a><img src="loam_velodyne%20-%20ROS%20Wiki_files/menu_right.png" height="53" width="60"></nobr></td>
+
+      </tr>
+    </tbody></table> <!-- topnav-table -->
+
+    </div> <!-- /#topav -->
+  </div> <!-- /#header -->
+
+
+<div id="header2">
+
+<ul id="pagelocation">
+<li><a class="backlink" href="http://wiki.ros.org/action/fullsearch/loam_velodyne?action=fullsearch&amp;context=180&amp;value=linkto%3A%22loam_velodyne%22" rel="nofollow" title="Click to do a full-text search for this title">loam_velodyne</a></li>
+</ul>
+
+<div id="locationline">
+</div>
+</div>
+
+<div id="sidebar">
+<div class="sidepanel">
+<h1>Wiki</h1>
+
+<ul id="navibar">
+<li class="wikilink"><a href="http://wiki.ros.org/Distributions">Distributions</a></li><li class="wikilink"><a href="http://wiki.ros.org/ROS/Installation">ROS/Installation</a></li><li class="wikilink"><a href="http://wiki.ros.org/ROS/Tutorials">ROS/Tutorials</a></li><li class="wikilink"><a href="http://wiki.ros.org/RecentChanges">RecentChanges</a></li><li class="current"><a href="http://wiki.ros.org/loam_velodyne">loam_velodyne</a></li>
+</ul>
+
+</div>
+<div class="sidepanel">
+<h1>Page</h1>
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onclick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="http://wiki.ros.org/action/info/loam_velodyne?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="http://wiki.ros.org/action/AttachFile/loam_velodyne?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/loam_velodyne">
+<div>
+    
+    <select name="action" onchange="if ((this.selectedIndex != 0) &amp;&amp;
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option selected="selected" value="show">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="show" disabled="disabled" class="disabled">Delete Cache</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="disabled" class="disabled">Rename Page</option>
+<option value="CopyPage">Copy Page</option>
+<option value="DeletePage" disabled="disabled" class="disabled">Delete Page</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="MyPages">My Pages</option>
+<option value="show" disabled="disabled" class="disabled">Subscribe User</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="show" disabled="disabled" class="disabled">Remove Spam</option>
+<option value="show" disabled="disabled" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="CreatePdfDocument">CreatePdfDocument</option>
+<option value="Load">Load</option>
+<option value="RawFile">RawFile</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+<div class="sidepanel">
+<h1>User</h1>
+<ul id="username"><li><a href="http://wiki.ros.org/action/login/loam_velodyne?action=login" id="login" rel="nofollow">Login</a></li></ul>
+</div>
+</div>
+
+<div id="page" dir="ltr" lang="en">
+
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867"><span id="rosversion_selector" class="btn-group">
+
+
+
+<button style="background: rgb(230, 230, 230) none repeat scroll 0% 0%; color: rgb(62, 79, 110);" id="hydro" class="btn btn-default" onclick="Version({show:['hydro_and_newer', 'hydro_and_older', 'indigo_and_older', 'hydro'], hide:['hydro_and_newer', 'indigo_and_newer', 'hydro_and_older', 'indigo'], target_ros_distro:'hydro'});this.style.color='#e6e6e6';this.style.background='#3e4f6e';document.getElementById('indigo').style.background='#e6e6e6';document.getElementById('indigo').style.color='#3e4f6e';return false"> hydro </button>
+<button style="color: rgb(230, 230, 230); background: rgb(62, 79, 110) none repeat scroll 0% 0%;" id="indigo" class="btn btn-default" onclick="Version({show:['hydro_and_newer', 'indigo_and_newer', 'indigo_and_older', 'indigo'], hide:['indigo_and_newer', 'hydro_and_older', 'indigo_and_older', 'hydro'], target_ros_distro:'indigo'});this.style.color='#e6e6e6';this.style.background='#3e4f6e';document.getElementById('hydro').style.background='#e6e6e6';document.getElementById('hydro').style.color='#3e4f6e';return false"> indigo </button>
+
+
+</span><span style="text-align:left">&nbsp;&nbsp;<a href="javascript:toggleDocStatus()">Documentation Status</a></span></p><div id="doc_status" style="background:#CCCCCC;display:none;margin-top:0px;margin-bottom:0px;padding-top:0px"><ul style="padding-top:5px;margin-top:0px;margin-bottom:0px;padding-bottom:5px;"><li><b>electric:</b> Cannot load information on <strong>name: loam_velodyne, distro: electric</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</li><br><li><b>fuerte:</b> Cannot load information on <strong>name: loam_velodyne, distro: fuerte</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</li><br><li><b>groovy:</b> Cannot load information on <strong>name: loam_velodyne, distro: groovy</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</li><br><li><b>hydro:</b> <i>Documentation generated on November 11, 2014 at 11:25 AM</i><span style="font-size:10px"> (<a href="http://jenkins.ros.org/job/doc-hydro-loam_velodyne/">doc job</a>).</span></li><br><li><b>indigo:</b> <i>Documentation generated on November 10, 2014 at 01:32 PM</i><span style="font-size:10px"> (<a href="http://jenkins.ros.org/job/doc-indigo-loam_velodyne/">doc job</a>).</span></li><br><li><b>jade:</b> Cannot load information on <strong>name: loam_velodyne, distro: jade</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</li><br><li><b>kinetic:</b> Cannot load information on <strong>name: loam_velodyne, distro: kinetic</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</li><br></ul></div><div style="display: none;" class="version electric">Cannot load information on <strong>name: loam_velodyne, distro: electric</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</div>
+<div style="display: none;" class="version fuerte">Cannot load information on <strong>name: loam_velodyne, distro: fuerte</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</div>
+<div style="display: none;" class="version groovy">Cannot load information on <strong>name: loam_velodyne, distro: groovy</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</div>
+<div style="display: none;" class="version hydro"><div class="package-links"><strong>Package Links</strong><ul><li><strong><a href="http://docs.ros.org/hydro/api/loam_velodyne/html">Code API</a></strong></li><li><a href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:loam_velodyne/page:1/">FAQ</a></li><li><a class="nonexistent" href="http://wiki.ros.org/loam_velodyne/ChangeList">Change List</a></li><li><a class="nonexistent" href="http://wiki.ros.org/loam_velodyne/Reviews">Reviews</a></li></ul><script type="text/javascript" src="loam_velodyne%20-%20ROS%20Wiki_files/roswiki.js"></script><strong><a href="#" onclick="toggleExpandable('hydrodependencies-list'); return false;">Dependencies</a> (5)</strong><br><div id="hydrodependencies-list" style="display:none"><ul><li><a href="http://wiki.ros.org/catkin?distro=hydro">catkin</a></li><li><a href="http://wiki.ros.org/pcl_ros?distro=hydro">pcl_ros</a></li><li><a href="http://wiki.ros.org/roscpp?distro=hydro">roscpp</a></li><li><a href="http://wiki.ros.org/sensor_msgs?distro=hydro">sensor_msgs</a></li><li><a href="http://wiki.ros.org/std_msgs?distro=hydro">std_msgs</a></li></ul></div></div><h1>Package Summary</h1><p><span class="badge" style="background-color: #5cb85c;"><span class="glyphicon glyphicon-ok" style="color: white;"></span> Documented</span></p><p id="package-info">Laser Odometry and Mapping (Velodyne version)</p><p id="package-info-1"></p><ul><li>Maintainer: Ji Zhang &lt;zhangji AT cmu DOT edu&gt;</li><li>Author: Ji Zhang</li><li>License: BSD</li><li>Source: git <a href="https://github.com/jizhang-cmu/loam_velodyne">https://github.com/jizhang-cmu/loam_velodyne.git</a> (branch: hydro-indigo)</li></ul></div>
+<div style="display: block;" class="version indigo"><div class="package-links"><strong>Package Links</strong><ul><li><strong><a href="http://docs.ros.org/indigo/api/loam_velodyne/html">Code API</a></strong></li><li><a href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:loam_velodyne/page:1/">FAQ</a></li><li><a class="nonexistent" href="http://wiki.ros.org/loam_velodyne/ChangeList">Change List</a></li><li><a class="nonexistent" href="http://wiki.ros.org/loam_velodyne/Reviews">Reviews</a></li></ul><script type="text/javascript" src="loam_velodyne%20-%20ROS%20Wiki_files/roswiki.js"></script><strong><a href="#" onclick="toggleExpandable('indigodependencies-list'); return false;">Dependencies</a> (5)</strong><br><div id="indigodependencies-list" style="display:none"><ul><li><a href="http://wiki.ros.org/catkin?distro=indigo">catkin</a></li><li><a href="http://wiki.ros.org/pcl_ros?distro=indigo">pcl_ros</a></li><li><a href="http://wiki.ros.org/roscpp?distro=indigo">roscpp</a></li><li><a href="http://wiki.ros.org/sensor_msgs?distro=indigo">sensor_msgs</a></li><li><a href="http://wiki.ros.org/std_msgs?distro=indigo">std_msgs</a></li></ul></div><script type="text/javascript" src="loam_velodyne%20-%20ROS%20Wiki_files/roswiki.js"></script><strong><a href="#" onclick="toggleExpandableJenkins('stack-indigojenkins-list'); return false;">Jenkins jobs</a> (1)</strong><br><div id="stack-indigojenkins-list" style="display:none"><ul><li><a href="http://jenkins.ros.org/job/doc-indigo-loam_velodyne/">doc</a></li></ul></div></div><h1>Package Summary</h1><p><span class="badge" style="background-color: #5cb85c;"><span class="glyphicon glyphicon-ok" style="color: white;"></span> Documented</span></p><p id="package-info-2">Laser Odometry and Mapping (Velodyne version)</p><p id="package-info-3"></p><ul><li>Maintainer: Ji Zhang &lt;zhangji AT cmu DOT edu&gt;</li><li>Author: Ji Zhang</li><li>License: BSD</li><li>Source: git <a href="https://github.com/jizhang-cmu/loam_velodyne">https://github.com/jizhang-cmu/loam_velodyne.git</a> (branch: hydro-indigo)</li></ul></div>
+<div style="display: none;" class="version jade">Cannot load information on <strong>name: loam_velodyne, distro: jade</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</div>
+<div style="display: none;" class="version kinetic">Cannot load information on <strong>name: loam_velodyne, distro: kinetic</strong>, which means that it is not yet in our index. Please see <a href="http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation">this page</a> for information on how to submit your repository to our index.</div><p class="line874"> <span class="anchor" id="line-2"></span></p><div class="table-of-contents"><p class="table-of-contents-heading">Contents</p><ol><li>
+<a href="#Overview">Overview</a></li><li>
+<a href="#Usage">Usage</a></li><li>
+<a href="#Datasets">Datasets</a></li><li>
+<a href="#Notes">Notes</a></li><li>
+<a href="#References">References</a></li><li>
+<a href="#More_Info">More Info</a></li></ol></div><p class="line874"> <span class="anchor" id="line-3"></span><span class="anchor" id="line-4"></span></p><p class="line867"><img alt="maps.jpg" class="attachment" src="loam_velodyne%20-%20ROS%20Wiki_files/loam_velodyne_003.jpeg" title="maps.jpg"> <span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span></p><p class="line867"><span class="anchor" id="line-7"></span></p><div class="blue solid"><span class="anchor" id="line-1-1"></span><p class="line862">The code has been removed from the public domain. The technology is now available as <a class="http" href="http://www.realearth.us/products.html">commercial produces</a>. </p></div><span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><p class="line867">
+</p><h2 id="Overview">Overview</h2>
+<span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span><p class="line874">Laser
+ Odometry and Mapping (Loam) is a realtime method for state estimation 
+and mapping using a 3D lidar. The program contains two major threads 
+running in parallel. An "odometry" thread computes motion of the lidar 
+between two sweeps, at a higher frame rate. It also removes distortion 
+in the point cloud caused by motion of the lidar. A "mapping" thread 
+takes the undistorted point cloud and incrementally builds a map, while 
+simultaneously computes pose of the lidar on the map at a lower frame 
+rate. The lidar state estimation is combination of the outputs from the 
+two threads. <span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span></p><p class="line874">If
+ an IMU is available, the orientation (integrated from angular rate) and
+ acceleration measurements are used to deal with general motion of the 
+lidar, while the program takes care of the linear motion. <span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span></p><p class="line862">The
+ program is tested on a laptop with 2.5 GHz quad cores and 6 Gib memory 
+(the program consumes two cores). It uses a Velodyne VLP-16 lidar (see 
+following figure). Another two versions of the program using a <a class="http" href="http://wiki.ros.org/loam_back_and_forth">back and forth spin lidar</a> and a <a class="http" href="http://wiki.ros.org/loam_continuous">continuous spin lidar</a> are available. <span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span></p><p class="line867"><img alt="lidar3.jpg" class="attachment" src="loam_velodyne%20-%20ROS%20Wiki_files/loam_velodyne_002.jpeg" title="lidar3.jpg"> <span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span></p><p class="line867">
+</p><h2 id="Usage">Usage</h2>
+<span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span><p class="line862">To run the program, users need to download the code from <a class="https" href="https://github.com/jizhang-cmu/loam_velodyne">GitHub</a>,
+ or follow the link on the top of this page. The program can be started 
+by ROS launch file (available in the downloaded folder), which starts 
+four nodes and rivz: <span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span></p><p class="line867"><span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span></p><pre><span class="anchor" id="line-1-2"></span>roslaunch loam_velodyne.launch</pre><span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span><p class="line862">Datasets are available for download from <a class="http" href="http://www.frc.ri.cmu.edu/%7Ejizhang03/projects.htm">here</a>,
+ or at the bottom of this page. Please make sure the data files are for 
+the Velodyne version (not back and forth spin or continuous spin 
+version). With the program running (from the launch file), users can 
+play the data file: <span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span></p><p class="line867"><span class="anchor" id="line-30"></span><span class="anchor" id="line-31"></span></p><pre><span class="anchor" id="line-1-3"></span>rosbag play data_file_name.bag</pre><span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span><p class="line874">Note
+ that if a slow computer is used, users can try to play the data file at
+ a low speed, e.g. play the data file at half speed:  <span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span></p><p class="line867"><span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span></p><pre><span class="anchor" id="line-1-4"></span>rosbag play data_file_name.bag -r 0.5</pre><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><p class="line867">
+</p><h2 id="Datasets">Datasets</h2>
+<span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><p class="line867"><a class="http" href="http://www.frc.ri.cmu.edu/%7Ejizhang03/Datasets/nsh_indoor_outdoor.bag">NSH indoor outdoor</a> (<a class="http" href="http://www.frc.ri.cmu.edu/%7Ejizhang03/Videos/nsh_indoor_outdoor.mp4">Video</a>): from inside of a building to outside <span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span></p><p class="line867"><img alt="nsh_indoor_outdoor.jpg" class="attachment" src="loam_velodyne%20-%20ROS%20Wiki_files/loam_velodyne.jpeg" title="nsh_indoor_outdoor.jpg"> <span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span></p><p class="line867"><a class="http" href="http://www.frc.ri.cmu.edu/%7Ejizhang03/Datasets/gates_oscillating_motion.bag">Gates oscillating motion</a> (<a class="http" href="http://www.frc.ri.cmu.edu/%7Ejizhang03/Videos/gates_oscillating_motion.mp4">Video</a>): test with an IMU <span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span></p><p class="line867"><img alt="gates_oscillating_motion.jpg" class="attachment" src="loam_velodyne%20-%20ROS%20Wiki_files/loam_velodyne_004.jpeg" title="gates_oscillating_motion.jpg"> <span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span></p><p class="line867">
+</p><h2 id="Notes">Notes</h2>
+<span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><p class="line874">The
+ input messages from the Velodyne and IMU follow the convention of x- 
+pointing to the front, y- pointing to the left, and z- pointing upward. 
+The IMU messages should be projected to align with the Velodyne frame 
+before sending in. <span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span></p><p class="line874">Another version that uses a Velodyne HDL-32E with an IMU is available upon request by sending an email to the author. <span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span></p><p class="line867">
+</p><h2 id="References">References</h2>
+<span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><p class="line867"><a class="http" href="http://www.frc.ri.cmu.edu/%7Ejizhang03">J. Zhang</a> and <a class="http" href="http://www.frc.ri.cmu.edu/%7Essingh/Sanjiv_Singh/home.html">S. Singh</a>. LOAM: Lidar Odometry and Mapping in Real-time. Robotics: Science and Systems Conference (RSS). Berkeley, CA, July 2014. <span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span></p><p class="line867">
+</p><h2 id="More_Info">More Info</h2>
+<span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span><p class="line867"><a class="http" href="http://www.youtube.com/channel/UCEEqrCpT8lnp0q1HBzS3rtQ?feature=watch">Research videos</a> <span class="anchor" id="line-62"></span><a class="http" href="http://www.realearth.us/">Real Earth</a> <span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span></p><p class="line867"><span class="anchor" id="line-65"></span></p><p class="line867"><span class="anchor" id="line-66"></span><span class="anchor" id="bottom"></span></p></div></div>
+<div id="pagebottom"></div>
+</div>
+
+<p id="pageinfo" class="info" dir="ltr" lang="en">Wiki: loam_velodyne  (last edited 2016-02-24 01:44:29 by <span title="jizhang-cmu @ CMU-896554.WV.CC.CMU.EDU[128.237.241.85]"><a class="nonexistent" href="http://wiki.ros.org/jizhang-cmu" title="jizhang-cmu @ CMU-896554.WV.CC.CMU.EDU[128.237.241.85]">jizhang-cmu</a></span>)</p>
+
+
+
+
+<div style="margin-top: 9px;" class="footer">
+Except where otherwise noted, the ROS wiki is licensed under the <br><a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a> | <a href="https://plus.google.com/113789706402978299308" rel="publisher">Find us on Google+</a>
+<hr style="margin-top: 10px;">
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+<a href="http://www.osrfoundation.org/"><img style="margin-top: -1px;" src="loam_velodyne%20-%20ROS%20Wiki_files/brought_by_horiz.png"><p></p></a>
+  </div>
+</div>
+</div>
+
+  </div> <!-- /#dpage-inner, /#dpage -->
+
+
+
+
+
+</body></html>

@@ -1,0 +1,431 @@
+/*  screen.css - MoinMoin Default Styles
+
+Copyright (c) 2001, 2002, 2003 by Juergen Hermann
+*/
+
+/* content styles */
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#pageinfo {
+   font-size: 10pt;
+}
+a.download {
+  font-size: 120%;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  background: #E7E7E7;
+  border: 1px solid #9C9C9C;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.footnotes div {
+  width: 5em;
+  border-top: 1px solid #e5e5e5;
+}
+
+input {
+  font-size: 1em;
+  font-family: Arial, Lucida Grande, sans-serif;
+}
+
+textarea {
+  font-size: 1em;
+  font-family: monospace;
+}
+
+span.sep {
+  display: none;
+}
+
+/* user interface styles */
+
+#logo {
+  float: left;
+  margin: 5px 10px;
+  padding: 0;
+  /* For text only logo */
+  font-size: 1.4em;
+  line-height: 1em;
+  font-weight: bold;
+}
+
+*[dir="rtl"] #logo {
+  float: right;
+}
+
+#logo img {
+  vertical-align: middle;
+}
+
+#logo a {
+  color: black;
+  text-decoration: none;
+}
+
+#searchform {
+  float: right;
+  margin: 5px 10px 0 10px;
+  padding: 0;
+  white-space: nowrap;
+}
+
+*[dir="rtl"] #searchform {
+  float: left;
+}
+
+#searchform form div {
+  display: inline;
+}
+
+#dpage {
+  width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#page {
+/*  margin: 10px 220px 10px 10px; */
+
+  padding: 4px;
+  margin-left: 10px;
+  width: 780px;
+}
+
+.footer {
+  margin-left: 10px;
+  clear: all;
+  font-size: 10pt;
+  color: #999;
+}
+#sidebar {
+  display: inline;
+  margin: 10px;
+  float: right;
+  clear: right;
+  width: 200px;
+  padding: 0;  
+  font-size: 0.88em;
+  overflow: hidden;
+}
+
+.sidepanel {
+  margin: 0 0 10px 0;
+  float: right;
+  width: 180px;  
+}
+
+.sidepanel h1 {
+  margin: 0;
+  padding: 0.2em 10px;
+  text-align: center;
+  border: none;
+  border-top: 1px solid white;
+  border-bottom: 1pt solid #BFAE8F;
+  font-size: 1em;
+  color: black;
+}
+
+.sidepanel h2 {
+  margin: 0;
+  padding: 0.2em 10px;
+  font-size: 1em;
+  border: none;
+  color: black;
+  /*background: #BFAE8F; */
+}
+
+.sidepanel ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidepanel li {
+  margin: 0;
+  padding: 2px 10px;
+}
+
+.sidepanel li form {
+  margin: 0;
+}
+
+.sidepanel a {
+  text-decoration: none;
+  display: block;
+}
+
+.sidepanel a:hover {
+  text-decoration: underline;
+}
+
+.actionsmenu select {
+  width: 160px;
+}
+
+#pagetrail {
+  clear: right;
+  margin: 5px 11px;
+  padding: 0;
+  font-size: 0.88em;
+}
+
+*[dir="rtl"] #pagetrail {
+  clear: left;
+  margin: 0 11px;
+}
+
+#interwiki {
+  margin: 5px 11px;
+  display: inline;
+  font-size: 1em;
+}
+
+*[dir="rtl"] #interwiki {
+  margin: 0;
+}
+
+#interwiki span:after {
+  content: ":";
+}
+
+#locationline {
+  clear: right;
+  padding: 0;
+}
+
+*[dir="rtl"] #locationline {
+  clear: left;
+}
+
+#header2 {
+   margin-top: 20px;
+   margin-bottom: 0;
+}
+#pagelocation {
+  display: inline;
+  margin: 0 0 0 10px;
+  padding: 0;
+  font-size: 18pt;
+  font-weight: bold;
+}
+#pagelocation a {
+  text-decoration: none;
+}
+
+#pagetrail li, #pagelocation li {
+  display: inline;
+  margin: 0;
+}
+
+/* XXX Warning: non-ascii characters! */
+#pagetrail li:after {
+  content: " » ";
+}
+
+*[dir="rtl"] #pagetrail li:after {
+  content: " « ";
+}
+
+#pagetrail li:last-child:after {
+  content: "";
+}
+
+#pagelocation li:after {
+  content: "/ ";
+}
+
+*[dir="rtl"] #pagelocation li:after {
+  content: " \\ "; /* TODO: check what looks best with RTL */
+}
+
+#pagelocation li:last-child:after {
+  content: "";
+}
+
+#navibar li.current {
+  border: none;
+  background: #eee;
+}
+
+.editbar form, .editbar form div {
+  display: inline;
+  margin: 0;
+}
+
+#message {
+  margin: 10px 220px 10px 10px;
+  padding: 4px;
+  background-color: #F0ECE6;
+  border: 1px solid #9c9c9c;
+  border-bottom: 2px solid #9c9c9c;
+}
+
+#message p {
+  margin: 5px 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+#message div.buttons {
+  font-weight: normal;
+}
+
+form.dialog {
+  margin: 0 15px;
+}
+
+.dialog td {
+  border: none;
+  padding: 5px;
+}
+
+.dialog td.label {
+  text-align: right;
+  font-weight: bold;
+  width: 25%;
+}
+
+*[dir="rtl"] .dialog td.label {
+  text-align: left;
+}
+
+.dialog td.content input {
+  width: 100%;
+}
+
+/* We use here dumb css1 ids because of IE suckiness */
+#editor-comment {width: 70%;}
+#editor-textarea {width: 100%;}
+
+#preview, #previewbelow {
+  border: 2px solid #e5e5e5;
+  padding: .5em;
+  background: url(../img/draft.png);
+}
+
+#textcha {
+  font-size: 100%;
+  margin-top: 0.5em;
+  border: 2px solid #FF8888;
+  color: black;
+  vertical-align: middle;
+  padding: 3px 2px;
+}
+
+#textcha-answer {
+  border: 2px solid #000000;
+  padding: 3px 2px;
+}
+
+#pagebottom {
+  clear: both;
+}
+
+#footer {
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+#credits, #version, #timings{
+  margin: 5px 10px;
+  padding: 0;
+  text-align: center;
+  font-size: 0.88em;
+  color: #6C7680;
+}
+
+#credits li, #timings li {
+  display: inline;
+  padding: 0 2px;
+  margin: 0 4px;
+}
+
+#credits img {
+  vertical-align: middle;
+}
+
+.diff {
+  width: 99%;
+}
+
+.diff-title {
+  background-color: #C0C0C0;
+}
+
+.diff-added {
+  background-color: #E0FFE0;
+  vertical-align: sub;
+}
+
+.diff-removed {
+  background-color: #FFFFE0;
+  vertical-align: sub;
+}
+
+.diff-added span {
+  background-color: #80FF80;
+}
+
+.diff-removed span {
+  background-color: #FFFF80;
+}
+
+.searchresult dd span {
+  font-weight: bold;
+}
+
+#openididentifier {
+  background: url(../../common/openid.png) no-repeat;
+  background-position: 0 50%;
+  padding-left: 18px;
+}
+
+#topnav-table {
+  border: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.package-links {
+  /* float this between the content and the Wiki sidebar. there is the issue that large package names can bleed into the right sidebar if they exceed the width */
+  float: right;
+  width: 200px;
+  padding: 5px;
+  margin-right: 0;
+  margin-left: 5px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+.package-links ul {
+  padding: 0;
+}
+.package-links li {
+  font-size: 10pt;
+  margin-left: 5px;
+  padding-left: 0;
+  list-style: none;
+}
+#package-links {
+  /* float this between the content and the Wiki sidebar. there is the issue that large package names can bleed into the right sidebar if they exceed the width */
+  float: right;
+  width: 200px;
+  padding: 5px;
+  margin-right: 0;
+  margin-left: 5px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+#package-links ul {
+  padding: 0;
+}
+#package-links li {
+  font-size: 10pt;
+  margin-left: 5px;
+  padding-left: 0;
+  list-style: none;
+}
